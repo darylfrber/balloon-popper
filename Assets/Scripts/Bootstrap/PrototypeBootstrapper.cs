@@ -169,6 +169,23 @@ public static class PrototypeBootstrapper
         trt.anchoredPosition = new Vector2(0f, -40f);
         trt.sizeDelta = new Vector2(800f, 80f);
 
+        // High Score (leaderboard: single highest value)
+        var hsGO = new GameObject("HighScoreText");
+        hsGO.transform.SetParent(mainMenuCanvas.transform, false);
+        var hsText = hsGO.AddComponent<Text>();
+        hsText.font = Resources.GetBuiltinResource<Font>("LegacyRuntime.ttf");
+        int hsVal = (GameManager.Instance != null) ? GameManager.Instance.HighScore : PlayerPrefs.GetInt("HighScore", 0);
+        hsText.text = $"High Score: {hsVal}";
+        hsText.fontSize = 28;
+        hsText.alignment = TextAnchor.UpperCenter;
+        hsText.color = Color.white;
+        var hsrt = hsGO.GetComponent<RectTransform>();
+        hsrt.anchorMin = new Vector2(0.5f, 1f);
+        hsrt.anchorMax = new Vector2(0.5f, 1f);
+        hsrt.pivot = new Vector2(0.5f, 1f);
+        hsrt.anchoredPosition = new Vector2(0f, -110f);
+        hsrt.sizeDelta = new Vector2(800f, 40f);
+
         // Helper to create a button
         GameObject MakeButton(string name, string label, Vector2 anchoredPos, UnityEngine.Events.UnityAction onClick)
         {
@@ -204,7 +221,10 @@ public static class PrototypeBootstrapper
         }
 
         MakeButton("StartButton", "Start", new Vector2(0f, -40f), StartGameplay);
-        MakeButton("QuitButton", "Quit", new Vector2(0f, -120f), Application.Quit);
+        MakeButton("QuitButton", "Quit", new Vector2(0f, -120f), () => {
+            if (GameManager.Instance != null) GameManager.Instance.QuitGame();
+            else Application.Quit();
+        });
     }
 
     public static void StartGameplay()

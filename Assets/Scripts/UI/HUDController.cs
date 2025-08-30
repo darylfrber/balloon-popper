@@ -11,6 +11,10 @@ public class HUDController : MonoBehaviour
 
     private void Update()
     {
-        scoreText.text = "Score: " + GameManager.Instance.Score; // Toon de score in de HUD
+        var gm = GameManager.Instance;
+        if (gm != null && scoreText != null)
+        {
+            scoreText.text = $"Score: {gm.Score}\nHigh: {gm.HighScore}"; // Toon score en hoogste score
+        }
     }
 }

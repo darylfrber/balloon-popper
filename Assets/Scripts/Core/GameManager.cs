@@ -11,6 +11,8 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance { get; private set; }
 
     private int score = 0;
+    private int highScore = 0;
+    private const string HighScoreKey = "HighScore";
     private bool doublePointsActive = false;
     private float doublePointsTimer = 0f;
 
@@ -27,6 +29,9 @@ public class GameManager : MonoBehaviour
 
         Instance = this;
         DontDestroyOnLoad(gameObject);
+
+        // Load persisted high score (single-number leaderboard)
+        highScore = PlayerPrefs.GetInt(HighScoreKey, 0);
     }
 
     // Methode om de score toe te voegen
@@ -35,11 +40,23 @@ public class GameManager : MonoBehaviour
         if (isGameOver) return;
         int amount = doublePointsActive ? baseAmount * 2 : baseAmount;
         score += amount;
-        Debug.Log($"Score updated: {score}");
+        
+        // Update high score if beaten and persist immediately
+        if (score > highScore)
+        {
+            highScore = score;
+            PlayerPrefs.SetInt(HighScoreKey, highScore);
+            PlayerPrefs.Save();
+        }
+        
+        Debug.Log($"Score updated: {score} (High: {highScore})");
     }
 
     // Eigenschap om de huidige score op te halen
     public int Score => score;
+
+    // Hoogste score (leaderboard: slechts 1 getal)
+    public int HighScore => highScore;
 
     // Methode om dubbele punten te activeren
     public void ActivateDoublePoints(float duration)
@@ -70,6 +87,14 @@ public class GameManager : MonoBehaviour
         if (isGameOver) return;
         isGameOver = true;
         Debug.Log("Game Over!");
+
+        // As a safeguard, update and persist high score at end
+        if (score > highScore)
+        {
+            highScore = score;
+            PlayerPrefs.SetInt(HighScoreKey, highScore);
+            PlayerPrefs.Save();
+        }
 
         // Stop all spawners
         var spawners = FindObjectsOfType<BalloonSpawner>();
@@ -156,6 +181,22 @@ public class GameManager : MonoBehaviour
         srt.anchoredPosition = new Vector2(0f, 40f);
         srt.sizeDelta = new Vector2(600f, 60f);
 
+        // High score text
+        var highGO = new GameObject("HighScore");
+        highGO.transform.SetParent(canvasGO.transform, false);
+        var hst = highGO.AddComponent<Text>();
+        hst.font = Resources.GetBuiltinResource<Font>("LegacyRuntime.ttf");
+        hst.text = $"High Score: {highScore}";
+        hst.fontSize = 28;
+        hst.alignment = TextAnchor.MiddleCenter;
+        hst.color = Color.white;
+        var hrt = highGO.GetComponent<RectTransform>();
+        hrt.anchorMin = new Vector2(0.5f, 0.5f);
+        hrt.anchorMax = new Vector2(0.5f, 0.5f);
+        hrt.pivot = new Vector2(0.5f, 0.5f);
+        hrt.anchoredPosition = new Vector2(0f, 0f);
+        hrt.sizeDelta = new Vector2(600f, 50f);
+
         // Buttons
         GameObject MakeButton(string name, string label, Vector2 anchoredPos, UnityEngine.Events.UnityAction onClick)
         {
@@ -191,17 +232,66 @@ public class GameManager : MonoBehaviour
         }
 
         MakeButton("RestartButton", "Restart", new Vector2(0f, -20f), RestartCurrentScene);
-        MakeButton("QuitButton", "Quit", new Vector2(0f, -100f), Application.Quit);
+        MakeButton("QuitButton", "Quit", new Vector2(0f, -100f), QuitGame);
     }
 
     private void RestartCurrentScene()
     {
-        // Reset state and reload scene to start fresh
+        // Reset state and start fresh gameplay without full scene reload
+        // 1) Reset internal state
         isGameOver = false;
         doublePointsActive = false;
         doublePointsTimer = 0f;
         score = 0;
-        var scene = SceneManager.GetActiveScene();
-        SceneManager.LoadScene(scene.name);
+
+        // 2) Cleanup Game Over UI if present
+        var goCanvas = GameObject.Find("GameOverCanvas");
+        if (goCanvas != null)
+        {
+            try { Destroy(goCanvas); } catch { }
+        }
+
+        // 3) Stop and remove spawners
+        var spawners = FindObjectsOfType<BalloonSpawner>();
+        foreach (var sp in spawners)
+        {
+            try { sp.Stop(); } catch { }
+            try { Destroy(sp.gameObject); } catch { }
+        }
+
+        // 4) Destroy existing balloons
+        var balloons = FindObjectsOfType<Balloon>();
+        foreach (var b in balloons)
+        {
+            if (b != null) try { Destroy(b.gameObject); } catch { }
+        }
+
+        // 5) Remove old HUD (will be recreated)
+        var hud = GameObject.Find("HUD");
+        if (hud != null)
+        {
+            try { Destroy(hud); } catch { }
+        }
+
+        // 6) Re-enable click handler
+        var cam = Camera.main;
+        if (cam != null)
+        {
+            var click = cam.GetComponent<ClickToPop>();
+            if (click != null) click.enabled = true;
+        }
+
+        // 7) Start a fresh gameplay session
+        PrototypeBootstrapper.StartGameplay();
+    }
+
+    public void QuitGame()
+    {
+#if UNITY_EDITOR
+        // Stop play mode in the editor
+        UnityEditor.EditorApplication.isPlaying = false;
+#else
+        Application.Quit();
+#endif
     }
 }
