@@ -5,21 +5,27 @@ public static class PrototypeBootstrapper
 {
     private static bool hasRun;
     private static GameObject mainMenuCanvas;
+    private static readonly Color BackgroundColor = new Color(0.45f, 0.7f, 1f, 1f);
 
     // Creates a material compatible with URP/HDRP/Built-in where possible and applies the given color.
     private static Material CreateLitMaterial(Color color)
     {
-        Shader shader = Shader.Find("Universal Render Pipeline/Lit");
+        // Prefer URP Unlit or Built-in Unlit for maximum compatibility in Editor and Builds
+        Shader shader = Shader.Find("Universal Render Pipeline/Unlit");
         if (shader == null)
         {
             shader = Shader.Find("Unlit/Color");
         }
         if (shader == null)
         {
+            shader = Shader.Find("Universal Render Pipeline/Lit");
+        }
+        if (shader == null)
+        {
             shader = Shader.Find("Standard");
         }
         var mat = new Material(shader);
-        // Try both common color properties to support URP Lit (_BaseColor) and Built-in (_Color)
+        // Try both common color properties to support URP Lit (_BaseColor) and Built-in/Unlit (_Color)
         if (mat.HasProperty("_BaseColor")) mat.SetColor("_BaseColor", color);
         if (mat.HasProperty("_Color")) mat.SetColor("_Color", color);
         // Also set Material.color to be safe
@@ -30,50 +36,84 @@ public static class PrototypeBootstrapper
     [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.AfterSceneLoad)]
     private static void Bootstrap()
     {
-        if (hasRun) return;
-        hasRun = true;
-
-        // 1) Ensure Camera
-        var mainCam = Camera.main;
-        if (mainCam == null)
+        // On first run, set up core systems and show the main menu. On every scene load, ensure backdrop exists.
+        bool firstRunThisSession = !hasRun;
+        if (!hasRun)
         {
-            var camGO = new GameObject("Main Camera");
-            mainCam = camGO.AddComponent<Camera>();
-            camGO.tag = "MainCamera";
-            camGO.transform.position = new Vector3(0, 1.5f, -10f);
-            camGO.AddComponent<AudioListener>();
-        }
-        // Force perspective settings for existing or new camera
-        mainCam.orthographic = false;
-        mainCam.fieldOfView = 60f;
-        // Ensure click handler exists for popping balloons via raycast
-        if (mainCam.GetComponent<ClickToPop>() == null)
-        {
-            mainCam.gameObject.AddComponent<ClickToPop>();
+            hasRun = true;
+
+            // 1) Ensure Camera
+            var mainCam = Camera.main;
+            if (mainCam == null)
+            {
+                var camGO = new GameObject("Main Camera");
+                mainCam = camGO.AddComponent<Camera>();
+                camGO.tag = "MainCamera";
+                camGO.transform.position = new Vector3(0, 1.5f, -10f);
+                camGO.AddComponent<AudioListener>();
+            }
+            // Force perspective settings for existing or new camera
+            mainCam.orthographic = false;
+            mainCam.fieldOfView = 60f;
+            // Place/aim camera for a pleasant open-sky view
+            mainCam.transform.position = new Vector3(0f, 2f, -10f);
+            mainCam.transform.rotation = Quaternion.identity;
+            // Sensible clipping planes
+            mainCam.nearClipPlane = 0.1f;
+            mainCam.farClipPlane = 200f;
+            // Ensure a solid color background as a fallback in case materials/shaders fail in build
+            mainCam.clearFlags = CameraClearFlags.SolidColor;
+            mainCam.backgroundColor = BackgroundColor;
+            // Ensure click handler exists for popping balloons via raycast
+            if (mainCam.GetComponent<ClickToPop>() == null)
+            {
+                mainCam.gameObject.AddComponent<ClickToPop>();
+            }
+
+            // 2) Ensure Light
+            if (Object.FindObjectOfType<Light>() == null)
+            {
+                var lightGO = new GameObject("Directional Light");
+                var light = lightGO.AddComponent<Light>();
+                light.type = LightType.Directional;
+                light.intensity = 1f;
+                lightGO.transform.rotation = Quaternion.Euler(50f, -30f, 0f);
+            }
+
+            // 3) Ensure GameManager
+            if (GameManager.Instance == null)
+            {
+                var gm = new GameObject("GameManager");
+                gm.AddComponent<GameManager>();
+            }
         }
 
-        // 2) Ensure Light
-        if (Object.FindObjectOfType<Light>() == null)
-        {
-            var lightGO = new GameObject("Directional Light");
-            var light = lightGO.AddComponent<Light>();
-            light.type = LightType.Directional;
-            light.intensity = 1f;
-            lightGO.transform.rotation = Quaternion.Euler(50f, -30f, 0f);
-        }
-
-        // 3) Ensure GameManager
-        if (GameManager.Instance == null)
-        {
-            var gm = new GameObject("GameManager");
-            gm.AddComponent<GameManager>();
-        }
-
-        // 4) Create simple 3D environment for a menu backdrop
+        // Always ensure the simple 3D environment/backdrop exists for the current scene
         CreateSimple3DEnvironment();
 
-        // 5) Build Main Menu UI (3D themed backdrop + UI)
-        CreateMainMenu();
+        // Also enforce camera configuration every scene load
+        var camNow = Camera.main;
+        if (camNow != null)
+        {
+            camNow.orthographic = false;
+            camNow.fieldOfView = 60f;
+            camNow.nearClipPlane = 0.1f;
+            camNow.farClipPlane = 200f;
+            // Only override transform if it's still at origin (typical default scene state)
+            if (camNow.transform.position == Vector3.zero)
+            {
+                camNow.transform.position = new Vector3(0f, 2f, -10f);
+                camNow.transform.rotation = Quaternion.identity;
+            }
+            camNow.clearFlags = CameraClearFlags.SolidColor;
+            camNow.backgroundColor = BackgroundColor;
+        }
+
+        // Build Main Menu only on first run
+        if (firstRunThisSession)
+        {
+            CreateMainMenu();
+        }
     }
 
     private static void CreateMainMenu()
@@ -93,8 +133,25 @@ public static class PrototypeBootstrapper
         mainMenuCanvas = new GameObject("MainMenuCanvas");
         var canvas = mainMenuCanvas.AddComponent<Canvas>();
         canvas.renderMode = RenderMode.ScreenSpaceOverlay;
-        mainMenuCanvas.AddComponent<CanvasScaler>();
+        var scaler = mainMenuCanvas.AddComponent<CanvasScaler>();
+        scaler.uiScaleMode = CanvasScaler.ScaleMode.ScaleWithScreenSize;
+        scaler.referenceResolution = new Vector2(1920f, 1080f);
+        scaler.screenMatchMode = CanvasScaler.ScreenMatchMode.MatchWidthOrHeight;
+        scaler.matchWidthOrHeight = 0.5f;
         mainMenuCanvas.AddComponent<GraphicRaycaster>();
+
+        // Background (full-screen)
+        var bgGO = new GameObject("Background");
+        bgGO.transform.SetParent(mainMenuCanvas.transform, false);
+        var bgImg = bgGO.AddComponent<Image>();
+        bgImg.color = BackgroundColor;
+        bgImg.raycastTarget = false;
+        var bgRt = bgGO.GetComponent<RectTransform>();
+        bgRt.anchorMin = new Vector2(0f, 0f);
+        bgRt.anchorMax = new Vector2(1f, 1f);
+        bgRt.offsetMin = Vector2.zero;
+        bgRt.offsetMax = Vector2.zero;
+        bgGO.transform.SetAsFirstSibling();
 
         // Title
         var titleGO = new GameObject("Title");
@@ -239,7 +296,11 @@ public static class PrototypeBootstrapper
         var canvasGO = new GameObject("HUD");
         var canvas = canvasGO.AddComponent<Canvas>();
         canvas.renderMode = RenderMode.ScreenSpaceOverlay;
-        canvasGO.AddComponent<CanvasScaler>();
+        var scaler = canvasGO.AddComponent<CanvasScaler>();
+        scaler.uiScaleMode = CanvasScaler.ScaleMode.ScaleWithScreenSize;
+        scaler.referenceResolution = new Vector2(1920f, 1080f);
+        scaler.screenMatchMode = CanvasScaler.ScreenMatchMode.MatchWidthOrHeight;
+        scaler.matchWidthOrHeight = 0.5f;
         canvasGO.AddComponent<GraphicRaycaster>();
 
         // Score Text
@@ -305,7 +366,7 @@ public static class PrototypeBootstrapper
         var quadMr = backdrop.GetComponent<MeshRenderer>();
         if (quadMr != null)
         {
-            quadMr.material = CreateLitMaterial(new Color(0.5f, 0.75f, 1f));
+            quadMr.material = CreateLitMaterial(BackgroundColor);
         }
         var fitter = backdrop.AddComponent<BackgroundFitter>();
         fitter.targetCamera = cam;
@@ -314,5 +375,17 @@ public static class PrototypeBootstrapper
         {
             backdrop.transform.SetParent(cam.transform, worldPositionStays: false);
         }
+
+        // Clouds (3D) — remove old and create new per scene
+        var oldClouds = GameObject.Find("Clouds");
+        if (oldClouds != null) Object.Destroy(oldClouds);
+        var cloudsGO = new GameObject("Clouds");
+        var clouds = cloudsGO.AddComponent<CloudSystem>();
+        clouds.targetCamera = cam;
+        // Slightly tune defaults for this game
+        clouds.cloudCount = 12;
+        clouds.heightRange = new Vector2(6f, 16f);
+        clouds.depthRange = new Vector2(25f, 45f);
+        clouds.horizontalRange = 60f;
     }
 }
