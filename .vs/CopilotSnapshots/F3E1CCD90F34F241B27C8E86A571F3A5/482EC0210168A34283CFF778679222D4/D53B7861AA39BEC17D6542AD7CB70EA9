@@ -1,0 +1,40 @@
+﻿using UnityEngine;
+using System;
+
+public class GameManager : MonoBehaviour
+{
+    public static GameManager Instance { get; private set; }
+
+    public enum GameState { Menu, Playing, GameOver }
+    public GameState State { get; private set; } = GameState.Menu;
+
+    [Header("Refs")] public BalloonSpawner spawner; public HUDController hud; public Transform needleSpawnPoint; public GameObject needlePrefab;
+    [Header("Level")] public LevelConfig levelConfig; public float timeRemaining = 60f;
+
+    private bool doublePointsActive; private float doublePointsTimer;
+
+    public event Action OnGameStart; public event Action OnGameOver;
+
+    void Awake(){ if(Instance!=null && Instance!=this){ Destroy(gameObject); return;} Instance=this; }
+    void Start(){ EnterMenu(); }
+
+    void Update(){ if(State==GameState.Playing){ HandleTimer(); HandleInput(); UpdatePowerUps(); } }
+
+    void HandleInput(){ if(Input.GetMouseButtonDown(0)){ ThrowNeedle(); } }
+
+    void HandleTimer(){ timeRemaining -= Time.deltaTime; hud.UpdateTimer(timeRemaining); if(timeRemaining<=0f){ timeRemaining=0f; EndGame(); } }
+
+    void UpdatePowerUps(){ if(doublePointsActive){ doublePointsTimer -= Time.unscaledDeltaTime; if(doublePointsTimer<=0){ doublePointsActive=false; hud.SetDoublePoints(false);} } }
+
+    public void EnterMenu(){ State=GameState.Menu; hud.ShowMenu(true); hud.ShowGameOver(false); }
+
+    public void StartGame(){ ScoreManager.Instance.ResetScore(); timeRemaining = levelConfig != null ? levelConfig.levelDuration : 60f; State=GameState.Playing; spawner.Begin(levelConfig); hud.ShowMenu(false); hud.ShowGameOver(false); OnGameStart?.Invoke(); }
+
+    public void EndGame(){ if(State!=GameState.Playing) return; State=GameState.GameOver; spawner.Stop(); hud.ShowGameOver(true); OnGameOver?.Invoke(); }
+
+    void ThrowNeedle(){ if(needlePrefab==null || needleSpawnPoint==null) return; Instantiate(needlePrefab, needleSpawnPoint.position, Quaternion.identity); }
+
+    public void AddScore(int baseAmount){ int amount = doublePointsActive ? baseAmount*2 : baseAmount; ScoreManager.Instance.AddScore(amount); hud.UpdateScore(ScoreManager.Instance.Score); }
+
+    public void ActivateDoublePoints(float duration){ doublePointsActive=true; doublePointsTimer=duration; hud.SetDoublePoints(true); }
+}

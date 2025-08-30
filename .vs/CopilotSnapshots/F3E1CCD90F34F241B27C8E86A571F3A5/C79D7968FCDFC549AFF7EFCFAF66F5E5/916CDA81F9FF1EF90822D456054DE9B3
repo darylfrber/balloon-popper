@@ -1,0 +1,63 @@
+﻿using UnityEngine;
+using BalloonBuster.Core;
+
+public class LevelManager : MonoBehaviour
+{
+    public static LevelManager Instance { get; private set; }
+    public int currentLevelIndex;
+
+    [SerializeField] private BalloonSpawner spawner;
+    [SerializeField] private float timeRemaining;
+    private bool running;
+    private LevelConfigSO currentConfig;
+
+    public float TimeRemaining => timeRemaining;
+    public bool Running => running;
+
+    private void Awake()
+    {
+        if (Instance != null && Instance != this)
+        {
+            Destroy(gameObject);
+            return;
+        }
+        Instance = this;
+    }
+
+    private void Update()
+    {
+        if (!running) return;
+        timeRemaining -= Time.deltaTime;
+        if (timeRemaining <= 0f)
+        {
+            running = false;
+            GameManager.Instance.GameOver();
+        }
+    }
+
+    public void LoadLevel(LevelConfigSO config)
+    {
+        currentConfig = config;
+        timeRemaining = config.levelDuration;
+        spawner.Configure(config);
+        spawner.Begin();
+        running = true;
+    }
+
+    public void StopLevel()
+    {
+        running = false;
+        spawner.Stop();
+    }
+
+    public void AdvanceLevel()
+    {
+        currentLevelIndex++;
+    }
+
+    // Called externally when level should end
+    public void GameOver()
+    {
+        GameManager.Instance.EndGame();
+    }
+}

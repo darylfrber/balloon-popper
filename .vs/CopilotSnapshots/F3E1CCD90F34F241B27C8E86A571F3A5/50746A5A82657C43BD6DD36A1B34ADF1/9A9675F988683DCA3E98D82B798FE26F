@@ -1,0 +1,14 @@
+﻿using UnityEngine;
+
+public class Needle : MonoBehaviour
+{
+    public float speed = 10f;
+    public float lifeTime = 2f;
+    private float life;
+
+    void OnEnable(){ life = lifeTime; }
+
+    void Update(){ transform.Translate(Vector3.up * speed * Time.deltaTime); life -= Time.deltaTime; if(life<=0f){ Destroy(gameObject); } }
+
+    void OnTriggerEnter2D(Collider2D other){ var balloon = other.GetComponent<Balloon>(); if(balloon!=null){ balloon.Pop(); } }
+}

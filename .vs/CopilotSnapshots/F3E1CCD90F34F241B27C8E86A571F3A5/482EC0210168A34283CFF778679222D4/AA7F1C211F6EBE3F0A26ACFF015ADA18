@@ -1,0 +1,25 @@
+﻿using UnityEngine;
+using UnityEngine.UI;
+
+namespace BalloonBuster.Core
+{
+    public class HUDController : MonoBehaviour
+    {
+        [SerializeField] private Text scoreText;
+        [SerializeField] private Text timerText;
+        [SerializeField] private ScoreManager scoreManager;
+        [SerializeField] private LevelManager levelManager;
+
+        private void Update()
+        {
+            if (scoreManager != null)
+            {
+                scoreText.text = $"Score: {scoreManager.Score}";
+            }
+            if (levelManager != null && levelManager.Running)
+            {
+                timerText.text = Mathf.CeilToInt(levelManager.TimeRemaining).ToString();
+            }
+        }
+    }
+}

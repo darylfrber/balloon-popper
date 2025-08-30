@@ -1,0 +1,64 @@
+﻿using UnityEngine;
+
+public class LevelManager : MonoBehaviour
+{
+    public static LevelManager Instance { get; private set; }
+    public int currentLevelIndex;
+
+    [SerializeField] private BalloonSpawner spawner;
+    [SerializeField] private float timeRemaining;
+    private bool running;
+    private LevelConfig currentConfig;
+
+    public float TimeRemaining => timeRemaining;
+    public bool Running => running;
+
+    private void Awake()
+    {
+        if (Instance != null && Instance != this)
+        {
+            Destroy(gameObject);
+            return;
+        }
+        Instance = this;
+    }
+
+    private void Update()
+    {
+        if (!running) return;
+        timeRemaining -= Time.deltaTime;
+        if (timeRemaining <= 0f)
+        {
+            running = false;
+            GameManager.Instance.EndGame();
+        }
+    }
+
+    public void LoadLevel(LevelConfig config)
+    {
+        currentConfig = config;
+        timeRemaining = config.levelDuration;
+        if(spawner != null)
+        {
+            spawner.Begin(config);
+        }
+        running = true;
+    }
+
+    public void StopLevel()
+    {
+        running = false;
+        if(spawner!=null) spawner.Stop();
+    }
+
+    public void AdvanceLevel()
+    {
+        currentLevelIndex++;
+    }
+
+    // Optional external end trigger
+    public void GameOver()
+    {
+        GameManager.Instance.EndGame();
+    }
+}

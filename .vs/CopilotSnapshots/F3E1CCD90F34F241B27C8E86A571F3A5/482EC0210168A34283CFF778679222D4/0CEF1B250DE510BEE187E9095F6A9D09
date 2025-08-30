@@ -1,0 +1,24 @@
+﻿using UnityEngine;
+
+namespace BalloonBuster.Core
+{
+    public class ScoreManager : MonoBehaviour
+    {
+        public int Score { get; private set; }
+        public int HighScore { get; private set; }
+
+        public void Add(int amount)
+        {
+            Score += amount;
+            if (Score > HighScore)
+            {
+                HighScore = Score;
+            }
+        }
+
+        public void ResetScore()
+        {
+            Score = 0;
+        }
+    }
+}

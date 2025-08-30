@@ -1,0 +1,19 @@
+// 8/30/2025 AI-Tag
+// This was created with the help of Assistant, a Unity Artificial Intelligence product.
+
+using System;
+using UnityEngine;
+using UnityEngine.SceneManagement;
+
+public class GameOverManager : MonoBehaviour
+{
+    public void RestartGame()
+    {
+        SceneManager.LoadScene("Gameplay"); // Laad de gameplay-scène opnieuw
+    }
+
+    public void ReturnToMenu()
+    {
+        SceneManager.LoadScene("MainMenu"); // Ga terug naar het hoofdmenu
+    }
+}

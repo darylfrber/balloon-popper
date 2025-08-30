@@ -1,0 +1,41 @@
+﻿using UnityEngine;
+
+namespace BalloonBuster.Core
+{
+    public class LevelManager : MonoBehaviour
+    {
+        [SerializeField] private BalloonSpawner spawner;
+        [SerializeField] private float timeRemaining;
+        private bool running;
+        private LevelConfigSO currentConfig;
+
+        public float TimeRemaining => timeRemaining;
+        public bool Running => running;
+
+        private void Update()
+        {
+            if (!running) return;
+            timeRemaining -= Time.deltaTime;
+            if (timeRemaining <= 0f)
+            {
+                running = false;
+                GameManager.Instance.GameOver();
+            }
+        }
+
+        public void LoadLevel(LevelConfigSO config)
+        {
+            currentConfig = config;
+            timeRemaining = config.levelDuration;
+            spawner.Configure(config);
+            spawner.Begin();
+            running = true;
+        }
+
+        public void StopLevel()
+        {
+            running = false;
+            spawner.Stop();
+        }
+    }
+}

@@ -1,0 +1,17 @@
+﻿using UnityEngine;
+
+public class Balloon : MonoBehaviour
+{
+    public float riseSpeed = 1f;
+    public int scoreValue = 10;
+    public PowerUpDropper powerUpDropper;
+
+    private bool popped;
+
+    void Update(){ if(!popped){ transform.Translate(Vector3.up * riseSpeed * Time.deltaTime); if(transform.position.y > 6f) { Recycle(); } } }
+
+    public void Pop(){ if(popped) return; popped = true; GameManager.Instance.AddScore(scoreValue); if(powerUpDropper!=null) powerUpDropper.TryDrop(transform.position); // TODO: particle/audio
+        Recycle(); }
+
+    void Recycle(){ popped=false; gameObject.SetActive(false); }
+}

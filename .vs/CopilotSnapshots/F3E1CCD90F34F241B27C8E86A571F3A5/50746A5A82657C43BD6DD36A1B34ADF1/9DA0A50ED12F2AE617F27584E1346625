@@ -1,0 +1,50 @@
+﻿using UnityEngine;
+
+// Simple HUD using OnGUI so we avoid UnityEngine.UI dependency.
+public class HUDController : MonoBehaviour
+{
+    private int score;
+    private float timeLeft;
+    private bool showMenu = true;
+    private bool showGameOver = false;
+    private bool doublePointsActive = false;
+
+    // Public API used by GameManager
+    public void UpdateScore(int value){ score = value; }
+    public void UpdateTimer(float time){ timeLeft = time; }
+    public void ShowMenu(bool show){ showMenu = show; }
+    public void ShowGameOver(bool show){ showGameOver = show; }
+    public void SetDoublePoints(bool active){ doublePointsActive = active; }
+
+    // Button hooks (kept for compatibility if invoked from UI events)
+    public void OnStartButton(){ GameManager.Instance.StartGame(); }
+    public void OnRestartButton(){ GameManager.Instance.StartGame(); }
+
+    void OnGUI(){
+        var style = GUI.skin.label; style.fontSize = 20;
+        GUILayout.BeginArea(new Rect(10,10,300,200));
+        GUILayout.Label($"Score: {score}");
+        GUILayout.Label($"Time: {Mathf.CeilToInt(timeLeft)}");
+        if(doublePointsActive){ GUILayout.Label("DOUBLE POINTS!", GUILayout.Height(30)); }
+        GUILayout.EndArea();
+
+        if(showMenu){ DrawMenu(); }
+        if(showGameOver){ DrawGameOver(); }
+    }
+
+    void DrawMenu(){
+        GUILayout.BeginArea(new Rect(Screen.width/2-100, Screen.height/2-100, 200, 200), GUI.skin.box);
+        GUILayout.Label("Balloon Buster");
+        if(GUILayout.Button("Start")){ OnStartButton(); }
+        GUILayout.EndArea();
+    }
+
+    void DrawGameOver(){
+        GUILayout.BeginArea(new Rect(Screen.width/2-100, Screen.height/2-100, 200, 200), GUI.skin.box);
+        GUILayout.Label("Game Over");
+        GUILayout.Label($"Final Score: {score}");
+        if(GUILayout.Button("Restart")){ OnRestartButton(); }
+        if(GUILayout.Button("Menu")){ GameManager.Instance.EnterMenu(); }
+        GUILayout.EndArea();
+    }
+}
