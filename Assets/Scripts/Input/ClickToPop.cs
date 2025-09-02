@@ -73,10 +73,24 @@ public class ClickToPop : MonoBehaviour
         Ray ray = cam.ScreenPointToRay(screenPos);
         if (Physics.Raycast(ray, out RaycastHit hit, 200f))
         {
+            // First: balloons
             var balloon = hit.collider.GetComponentInParent<Balloon>();
             if (balloon != null)
             {
                 balloon.Pop();
+                return;
+            }
+            // Power-ups: activate on click
+            var powerUp = hit.collider.GetComponentInParent<PowerUp>();
+            if (powerUp != null)
+            {
+                if (GameManager.Instance != null && !GameManager.Instance.IsGameOver)
+                {
+                    GameManager.Instance.ActivateDoublePoints(powerUp.doublePointsDuration);
+                }
+                // Destroy the power-up object after activation
+                Destroy(powerUp.gameObject);
+                return;
             }
         }
     }

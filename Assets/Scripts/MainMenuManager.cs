@@ -9,7 +9,12 @@ public class MainMenuManager : MonoBehaviour
 {
     public void StartGame()
     {
-        SceneManager.LoadScene("Gameplay"); // Laad de gameplay-scène
+        // Use scene index instead of name for more reliable loading
+        int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
+        int gameSceneIndex = currentSceneIndex; // For now, reload the same scene
+        
+        Debug.Log($"Loading scene with index: {gameSceneIndex}");
+        SceneManager.LoadScene(gameSceneIndex);
     }
 
     public void QuitGame()

@@ -64,6 +64,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\GameOverManager.cs" />
+    <Compile Include="Assets\Scripts\Environment\HillsMesh.cs" />
     <Compile Include="Assets\Scripts\Input\ClickToPop.cs" />
     <Compile Include="Assets\Scripts\Gameplay\Balloon.cs" />
     <Compile Include="Assets\Scripts\Gameplay\Needle.cs" />
@@ -71,20 +72,26 @@
     <Compile Include="Assets\Scripts\Gameplay\NeedleVisual.cs" />
     <Compile Include="Assets\Scripts\Environment\LevelConfig.cs" />
     <Compile Include="Assets\Scripts\Environment\CloudSystem.cs" />
+    <Compile Include="Assets\Scripts\Gameplay\PowerUp.cs" />
     <Compile Include="Assets\Scripts\Gameplay\PowerUpDropper.cs" />
     <Compile Include="Assets\TutorialInfo\Scripts\Readme.cs" />
     <Compile Include="Assets\Scripts\MainMenuManager.cs" />
+    <Compile Include="Assets\Scripts\Core\ShaderKeeper.cs" />
     <Compile Include="Assets\Scripts\Bootstrap\PrototypeBootstrapper.cs" />
+    <Compile Include="Assets\Scripts\Environment\CameraParallax.cs" />
+    <Compile Include="Assets\Scripts\Gameplay\PowerUpSpawner.cs" />
     <Compile Include="Assets\Scripts\UI\HUDController.cs" />
     <Compile Include="Assets\Scripts\Environment\BackgroundFitter.cs" />
     <Compile Include="Assets\Scripts\Core\LevelManager.cs" />
     <Compile Include="Assets\Scripts\Config\LevelConfigSO.cs" />
     <Compile Include="Assets\Scripts\Gameplay\BalloonSpawner.cs" />
+    <Compile Include="Assets\Scripts\Core\RuntimeGuards.cs" />
     <Compile Include="Assets\Scripts\Gameplay\PowerUpPickup.cs" />
     <Compile Include="Assets\Scripts\Util\RuntimeArtFactory.cs" />
     <Compile Include="Assets\Scripts\Entities\Balloon.cs" />
     <Compile Include="Assets\Scripts\Core\GameManager.cs" />
     <Compile Include="Assets\Scripts\Spawning\BalloonSpawner.cs" />
+    <Compile Include="Assets\Scripts\Environment\MountainsMesh.cs" />
     <Compile Include="Assets\Scripts\Config\BalloonTypeSO.cs" />
   </ItemGroup>
   <ItemGroup>

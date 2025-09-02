@@ -1,4 +1,4 @@
-Library: C:\Users\scrip\OneDrive\Desktop\Unity\Balloon Popper\Temp\BurstOutput\Data\Plugins\x86_64\lib_burst_generated
+Library: C:\Users\scrip\balloon-popper\Temp\BurstOutput\Data\Plugins\x86_64\lib_burst_generated
 --platform=Windows
 --minimum-os-version=
 --backend=burst-llvm-19
@@ -10,10 +10,10 @@ Library: C:\Users\scrip\OneDrive\Desktop\Unity\Balloon Popper\Temp\BurstOutput\D
 --target-framework=NetFramework
 --linker-options=PdbAltPath="Balloon Popper_Data/Plugins/x86_64/lib_burst_generated.pdb"
 --generate-link-xml=Temp\burst.link.xml
---temp-folder=C:\Users\scrip\OneDrive\Desktop\Unity\Balloon Popper\Temp\Burst
+--temp-folder=C:\Users\scrip\balloon-popper\Temp\Burst
 --key-folder=C:/Program Files/Unity/Hub/Editor/6000.2.2f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport
---decode-folder=C:\Users\scrip\OneDrive\Desktop\Unity\Balloon Popper\Library\Burst
---output=C:\Users\scrip\OneDrive\Desktop\Unity\Balloon Popper\Temp\BurstOutput\Data\Plugins\x86_64\lib_burst_generated
+--decode-folder=C:\Users\scrip\balloon-popper\Library\Burst
+--output=C:\Users\scrip\balloon-popper\Temp\BurstOutput\Data\Plugins\x86_64\lib_burst_generated
 --pdb-search-paths=Temp/ManagedSymbols/
 
 --method=UnityEngine.Rendering.InstanceDataSystemBurst, Unity.RenderPipelines.GPUDriven.Runtime, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::FreeInstances(Unity.Collections.NativeArray`1+ReadOnly[[UnityEngine.Rendering.InstanceHandle, Unity.RenderPipelines.GPUDriven.Runtime, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]&, UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null|UnityEngine.Rendering.InstanceAllocators&, Unity.RenderPipelines.GPUDriven.Runtime, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null|UnityEngine.Rendering.CPUInstanceData&, Unity.RenderPipelines.GPUDriven.Runtime, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null|UnityEngine.Rendering.CPUPerCameraInstanceData&, Unity.RenderPipelines.GPUDriven.Runtime, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null|UnityEngine.Rendering.CPUSharedInstanceData&, Unity.RenderPipelines.GPUDriven.Runtime, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null|Unity.Collections.NativeParallelMultiHashMap`2[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089],[UnityEngine.Rendering.InstanceHandle, Unity.RenderPipelines.GPUDriven.Runtime, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]&, Unity.Collections, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null)--e3ec85dbfb115f04962960abd8f31fec
@@ -62,10 +62,10 @@ Library: C:\Users\scrip\OneDrive\Desktop\Unity\Balloon Popper\Temp\BurstOutput\D
 --target-framework=NetFramework
 --linker-options=PdbAltPath="Balloon Popper_Data/Plugins/x86_64/lib_burst_generated.pdb"
 --generate-link-xml=Temp\burst.link.xml
---temp-folder=C:\Users\scrip\OneDrive\Desktop\Unity\Balloon Popper\Temp\Burst
+--temp-folder=C:\Users\scrip\balloon-popper\Temp\Burst
 --key-folder=C:/Program Files/Unity/Hub/Editor/6000.2.2f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport
---decode-folder=C:\Users\scrip\OneDrive\Desktop\Unity\Balloon Popper\Library\Burst
---output=C:\Users\scrip\OneDrive\Desktop\Unity\Balloon Popper\Temp\BurstOutput\Data\Plugins\x86_64\lib_burst_generated
+--decode-folder=C:\Users\scrip\balloon-popper\Library\Burst
+--output=C:\Users\scrip\balloon-popper\Temp\BurstOutput\Data\Plugins\x86_64\lib_burst_generated
 --pdb-search-paths=Temp/ManagedSymbols/
 
 --method=UnityEngine.Rendering.InstanceDataSystemBurst, Unity.RenderPipelines.GPUDriven.Runtime, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::FreeInstances(Unity.Collections.NativeArray`1+ReadOnly[[UnityEngine.Rendering.InstanceHandle, Unity.RenderPipelines.GPUDriven.Runtime, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]&, UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null|UnityEngine.Rendering.InstanceAllocators&, Unity.RenderPipelines.GPUDriven.Runtime, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null|UnityEngine.Rendering.CPUInstanceData&, Unity.RenderPipelines.GPUDriven.Runtime, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null|UnityEngine.Rendering.CPUPerCameraInstanceData&, Unity.RenderPipelines.GPUDriven.Runtime, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null|UnityEngine.Rendering.CPUSharedInstanceData&, Unity.RenderPipelines.GPUDriven.Runtime, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null|Unity.Collections.NativeParallelMultiHashMap`2[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089],[UnityEngine.Rendering.InstanceHandle, Unity.RenderPipelines.GPUDriven.Runtime, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]&, Unity.Collections, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null)--e3ec85dbfb115f04962960abd8f31fec
@@ -115,10 +115,10 @@ Library: C:\Users\scrip\OneDrive\Desktop\Unity\Balloon Popper\Temp\BurstOutput\D
 --float-mode=Fast
 --linker-options=PdbAltPath="Balloon Popper_Data/Plugins/x86_64/lib_burst_generated.pdb"
 --generate-link-xml=Temp\burst.link.xml
---temp-folder=C:\Users\scrip\OneDrive\Desktop\Unity\Balloon Popper\Temp\Burst
+--temp-folder=C:\Users\scrip\balloon-popper\Temp\Burst
 --key-folder=C:/Program Files/Unity/Hub/Editor/6000.2.2f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport
---decode-folder=C:\Users\scrip\OneDrive\Desktop\Unity\Balloon Popper\Library\Burst
---output=C:\Users\scrip\OneDrive\Desktop\Unity\Balloon Popper\Temp\BurstOutput\Data\Plugins\x86_64\lib_burst_generated
+--decode-folder=C:\Users\scrip\balloon-popper\Library\Burst
+--output=C:\Users\scrip\balloon-popper\Temp\BurstOutput\Data\Plugins\x86_64\lib_burst_generated
 --pdb-search-paths=Temp/ManagedSymbols/
 
 --method=Unity.InferenceEngine.IParallelForBatchExtensions+ParallelForBatchJobStruct`1[[Unity.InferenceEngine.CPUBackend+ReduceProdFloatJob, Unity.InferenceEngine, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null]], Unity.InferenceEngine, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null::Execute(Unity.InferenceEngine.CPUBackend+ReduceProdFloatJob&, Unity.InferenceEngine, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null|System.IntPtr, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089|System.IntPtr, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089|Unity.Jobs.LowLevel.Unsafe.JobRanges&, UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null|System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089)--3912e99f84f44c04e56fd7676c67e909
@@ -188,10 +188,10 @@ Library: C:\Users\scrip\OneDrive\Desktop\Unity\Balloon Popper\Temp\BurstOutput\D
 --float-mode=Fast
 --linker-options=PdbAltPath="Balloon Popper_Data/Plugins/x86_64/lib_burst_generated.pdb"
 --generate-link-xml=Temp\burst.link.xml
---temp-folder=C:\Users\scrip\OneDrive\Desktop\Unity\Balloon Popper\Temp\Burst
+--temp-folder=C:\Users\scrip\balloon-popper\Temp\Burst
 --key-folder=C:/Program Files/Unity/Hub/Editor/6000.2.2f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport
---decode-folder=C:\Users\scrip\OneDrive\Desktop\Unity\Balloon Popper\Library\Burst
---output=C:\Users\scrip\OneDrive\Desktop\Unity\Balloon Popper\Temp\BurstOutput\Data\Plugins\x86_64\lib_burst_generated
+--decode-folder=C:\Users\scrip\balloon-popper\Library\Burst
+--output=C:\Users\scrip\balloon-popper\Temp\BurstOutput\Data\Plugins\x86_64\lib_burst_generated
 --pdb-search-paths=Temp/ManagedSymbols/
 
 --method=Unity.InferenceEngine.IParallelForBatchExtensions+ParallelForBatchJobStruct`1[[Unity.InferenceEngine.CPUBackend+ReduceProdFloatJob, Unity.InferenceEngine, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null]], Unity.InferenceEngine, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null::Execute(Unity.InferenceEngine.CPUBackend+ReduceProdFloatJob&, Unity.InferenceEngine, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null|System.IntPtr, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089|System.IntPtr, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089|Unity.Jobs.LowLevel.Unsafe.JobRanges&, UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null|System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089)--3912e99f84f44c04e56fd7676c67e909
@@ -260,10 +260,10 @@ Library: C:\Users\scrip\OneDrive\Desktop\Unity\Balloon Popper\Temp\BurstOutput\D
 --target-framework=NetFramework
 --linker-options=PdbAltPath="Balloon Popper_Data/Plugins/x86_64/lib_burst_generated.pdb"
 --generate-link-xml=Temp\burst.link.xml
---temp-folder=C:\Users\scrip\OneDrive\Desktop\Unity\Balloon Popper\Temp\Burst
+--temp-folder=C:\Users\scrip\balloon-popper\Temp\Burst
 --key-folder=C:/Program Files/Unity/Hub/Editor/6000.2.2f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport
---decode-folder=C:\Users\scrip\OneDrive\Desktop\Unity\Balloon Popper\Library\Burst
---output=C:\Users\scrip\OneDrive\Desktop\Unity\Balloon Popper\Temp\BurstOutput\Data\Plugins\x86_64\lib_burst_generated
+--decode-folder=C:\Users\scrip\balloon-popper\Library\Burst
+--output=C:\Users\scrip\balloon-popper\Temp\BurstOutput\Data\Plugins\x86_64\lib_burst_generated
 --pdb-search-paths=Temp/ManagedSymbols/
 
 --method=Unity.InferenceEngine.CPUBackend+ConvJob, Unity.InferenceEngine, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null::CanUseDepthwiseConvKernel(Unity.InferenceEngine.CPUBackend+ConvJob*, Unity.InferenceEngine, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null)--bb9ee214cc6c7be8529ee453202363e0
@@ -278,10 +278,10 @@ Library: C:\Users\scrip\OneDrive\Desktop\Unity\Balloon Popper\Temp\BurstOutput\D
 --target-framework=NetFramework
 --linker-options=PdbAltPath="Balloon Popper_Data/Plugins/x86_64/lib_burst_generated.pdb"
 --generate-link-xml=Temp\burst.link.xml
---temp-folder=C:\Users\scrip\OneDrive\Desktop\Unity\Balloon Popper\Temp\Burst
+--temp-folder=C:\Users\scrip\balloon-popper\Temp\Burst
 --key-folder=C:/Program Files/Unity/Hub/Editor/6000.2.2f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport
---decode-folder=C:\Users\scrip\OneDrive\Desktop\Unity\Balloon Popper\Library\Burst
---output=C:\Users\scrip\OneDrive\Desktop\Unity\Balloon Popper\Temp\BurstOutput\Data\Plugins\x86_64\lib_burst_generated
+--decode-folder=C:\Users\scrip\balloon-popper\Library\Burst
+--output=C:\Users\scrip\balloon-popper\Temp\BurstOutput\Data\Plugins\x86_64\lib_burst_generated
 --pdb-search-paths=Temp/ManagedSymbols/
 
 --method=Unity.InferenceEngine.CPUBackend+ConvJob, Unity.InferenceEngine, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null::CanUseDepthwiseConvKernel(Unity.InferenceEngine.CPUBackend+ConvJob*, Unity.InferenceEngine, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null)--bb9ee214cc6c7be8529ee453202363e0
@@ -297,10 +297,10 @@ Library: C:\Users\scrip\OneDrive\Desktop\Unity\Balloon Popper\Temp\BurstOutput\D
 --float-mode=Fast
 --linker-options=PdbAltPath="Balloon Popper_Data/Plugins/x86_64/lib_burst_generated.pdb"
 --generate-link-xml=Temp\burst.link.xml
---temp-folder=C:\Users\scrip\OneDrive\Desktop\Unity\Balloon Popper\Temp\Burst
+--temp-folder=C:\Users\scrip\balloon-popper\Temp\Burst
 --key-folder=C:/Program Files/Unity/Hub/Editor/6000.2.2f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport
---decode-folder=C:\Users\scrip\OneDrive\Desktop\Unity\Balloon Popper\Library\Burst
---output=C:\Users\scrip\OneDrive\Desktop\Unity\Balloon Popper\Temp\BurstOutput\Data\Plugins\x86_64\lib_burst_generated
+--decode-folder=C:\Users\scrip\balloon-popper\Library\Burst
+--output=C:\Users\scrip\balloon-popper\Temp\BurstOutput\Data\Plugins\x86_64\lib_burst_generated
 --pdb-search-paths=Temp/ManagedSymbols/
 
 --method=Unity.Jobs.IJobParallelForExtensions+ParallelForJobStruct`1[[Unity.InferenceEngine.CPUBackend+GlobalAverageVariancePoolJob, Unity.InferenceEngine, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null]], UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::Execute(Unity.InferenceEngine.CPUBackend+GlobalAverageVariancePoolJob&, Unity.InferenceEngine, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null|System.IntPtr, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089|System.IntPtr, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089|Unity.Jobs.LowLevel.Unsafe.JobRanges&, UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null|System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089)--96938fcf10393a25ded242e30e02636f
@@ -316,10 +316,10 @@ Library: C:\Users\scrip\OneDrive\Desktop\Unity\Balloon Popper\Temp\BurstOutput\D
 --float-mode=Fast
 --linker-options=PdbAltPath="Balloon Popper_Data/Plugins/x86_64/lib_burst_generated.pdb"
 --generate-link-xml=Temp\burst.link.xml
---temp-folder=C:\Users\scrip\OneDrive\Desktop\Unity\Balloon Popper\Temp\Burst
+--temp-folder=C:\Users\scrip\balloon-popper\Temp\Burst
 --key-folder=C:/Program Files/Unity/Hub/Editor/6000.2.2f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport
---decode-folder=C:\Users\scrip\OneDrive\Desktop\Unity\Balloon Popper\Library\Burst
---output=C:\Users\scrip\OneDrive\Desktop\Unity\Balloon Popper\Temp\BurstOutput\Data\Plugins\x86_64\lib_burst_generated
+--decode-folder=C:\Users\scrip\balloon-popper\Library\Burst
+--output=C:\Users\scrip\balloon-popper\Temp\BurstOutput\Data\Plugins\x86_64\lib_burst_generated
 --pdb-search-paths=Temp/ManagedSymbols/
 
 --method=Unity.Jobs.IJobParallelForExtensions+ParallelForJobStruct`1[[Unity.InferenceEngine.CPUBackend+GlobalAverageVariancePoolJob, Unity.InferenceEngine, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null]], UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::Execute(Unity.InferenceEngine.CPUBackend+GlobalAverageVariancePoolJob&, Unity.InferenceEngine, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null|System.IntPtr, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089|System.IntPtr, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089|Unity.Jobs.LowLevel.Unsafe.JobRanges&, UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null|System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089)--96938fcf10393a25ded242e30e02636f
@@ -334,10 +334,10 @@ Library: C:\Users\scrip\OneDrive\Desktop\Unity\Balloon Popper\Temp\BurstOutput\D
 --target-framework=NetFramework
 --linker-options=PdbAltPath="Balloon Popper_Data/Plugins/x86_64/lib_burst_generated.pdb"
 --generate-link-xml=Temp\burst.link.xml
---temp-folder=C:\Users\scrip\OneDrive\Desktop\Unity\Balloon Popper\Temp\Burst
+--temp-folder=C:\Users\scrip\balloon-popper\Temp\Burst
 --key-folder=C:/Program Files/Unity/Hub/Editor/6000.2.2f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport
---decode-folder=C:\Users\scrip\OneDrive\Desktop\Unity\Balloon Popper\Library\Burst
---output=C:\Users\scrip\OneDrive\Desktop\Unity\Balloon Popper\Temp\BurstOutput\Data\Plugins\x86_64\lib_burst_generated
+--decode-folder=C:\Users\scrip\balloon-popper\Library\Burst
+--output=C:\Users\scrip\balloon-popper\Temp\BurstOutput\Data\Plugins\x86_64\lib_burst_generated
 --pdb-search-paths=Temp/ManagedSymbols/
 
 --method=Unity.Jobs.IJobParallelForExtensions+ParallelForJobStruct`1[[Unity.InferenceEngine.CPUBackend+ExpandJob, Unity.InferenceEngine, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null]], UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::Execute(Unity.InferenceEngine.CPUBackend+ExpandJob&, Unity.InferenceEngine, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null|System.IntPtr, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089|System.IntPtr, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089|Unity.Jobs.LowLevel.Unsafe.JobRanges&, UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null|System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089)--c766a03e72c22f00e15a0e00ec1ec303
@@ -451,10 +451,10 @@ Library: C:\Users\scrip\OneDrive\Desktop\Unity\Balloon Popper\Temp\BurstOutput\D
 --target-framework=NetFramework
 --linker-options=PdbAltPath="Balloon Popper_Data/Plugins/x86_64/lib_burst_generated.pdb"
 --generate-link-xml=Temp\burst.link.xml
---temp-folder=C:\Users\scrip\OneDrive\Desktop\Unity\Balloon Popper\Temp\Burst
+--temp-folder=C:\Users\scrip\balloon-popper\Temp\Burst
 --key-folder=C:/Program Files/Unity/Hub/Editor/6000.2.2f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport
---decode-folder=C:\Users\scrip\OneDrive\Desktop\Unity\Balloon Popper\Library\Burst
---output=C:\Users\scrip\OneDrive\Desktop\Unity\Balloon Popper\Temp\BurstOutput\Data\Plugins\x86_64\lib_burst_generated
+--decode-folder=C:\Users\scrip\balloon-popper\Library\Burst
+--output=C:\Users\scrip\balloon-popper\Temp\BurstOutput\Data\Plugins\x86_64\lib_burst_generated
 --pdb-search-paths=Temp/ManagedSymbols/
 
 --method=Unity.Jobs.IJobParallelForExtensions+ParallelForJobStruct`1[[Unity.InferenceEngine.CPUBackend+ExpandJob, Unity.InferenceEngine, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null]], UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::Execute(Unity.InferenceEngine.CPUBackend+ExpandJob&, Unity.InferenceEngine, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null|System.IntPtr, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089|System.IntPtr, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089|Unity.Jobs.LowLevel.Unsafe.JobRanges&, UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null|System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089)--c766a03e72c22f00e15a0e00ec1ec303
@@ -568,10 +568,10 @@ Library: C:\Users\scrip\OneDrive\Desktop\Unity\Balloon Popper\Temp\BurstOutput\D
 --target-framework=NetFramework
 --linker-options=PdbAltPath="Balloon Popper_Data/Plugins/x86_64/lib_burst_generated.pdb"
 --generate-link-xml=Temp\burst.link.xml
---temp-folder=C:\Users\scrip\OneDrive\Desktop\Unity\Balloon Popper\Temp\Burst
+--temp-folder=C:\Users\scrip\balloon-popper\Temp\Burst
 --key-folder=C:/Program Files/Unity/Hub/Editor/6000.2.2f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport
---decode-folder=C:\Users\scrip\OneDrive\Desktop\Unity\Balloon Popper\Library\Burst
---output=C:\Users\scrip\OneDrive\Desktop\Unity\Balloon Popper\Temp\BurstOutput\Data\Plugins\x86_64\lib_burst_generated
+--decode-folder=C:\Users\scrip\balloon-popper\Library\Burst
+--output=C:\Users\scrip\balloon-popper\Temp\BurstOutput\Data\Plugins\x86_64\lib_burst_generated
 --pdb-search-paths=Temp/ManagedSymbols/
 
 --method=Unity.InferenceEngine.IParallelForBatchExtensions+ParallelForBatchJobStruct`1[[Unity.InferenceEngine.CPUBackend+GeluFastJob, Unity.InferenceEngine, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null]], Unity.InferenceEngine, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null::Execute(Unity.InferenceEngine.CPUBackend+GeluFastJob&, Unity.InferenceEngine, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null|System.IntPtr, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089|System.IntPtr, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089|Unity.Jobs.LowLevel.Unsafe.JobRanges&, UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null|System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089)--f8862752df1241006313c4004f1689e0
@@ -685,10 +685,10 @@ Library: C:\Users\scrip\OneDrive\Desktop\Unity\Balloon Popper\Temp\BurstOutput\D
 --target-framework=NetFramework
 --linker-options=PdbAltPath="Balloon Popper_Data/Plugins/x86_64/lib_burst_generated.pdb"
 --generate-link-xml=Temp\burst.link.xml
---temp-folder=C:\Users\scrip\OneDrive\Desktop\Unity\Balloon Popper\Temp\Burst
+--temp-folder=C:\Users\scrip\balloon-popper\Temp\Burst
 --key-folder=C:/Program Files/Unity/Hub/Editor/6000.2.2f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport
---decode-folder=C:\Users\scrip\OneDrive\Desktop\Unity\Balloon Popper\Library\Burst
---output=C:\Users\scrip\OneDrive\Desktop\Unity\Balloon Popper\Temp\BurstOutput\Data\Plugins\x86_64\lib_burst_generated
+--decode-folder=C:\Users\scrip\balloon-popper\Library\Burst
+--output=C:\Users\scrip\balloon-popper\Temp\BurstOutput\Data\Plugins\x86_64\lib_burst_generated
 --pdb-search-paths=Temp/ManagedSymbols/
 
 --method=Unity.InferenceEngine.IParallelForBatchExtensions+ParallelForBatchJobStruct`1[[Unity.InferenceEngine.CPUBackend+GeluFastJob, Unity.InferenceEngine, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null]], Unity.InferenceEngine, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null::Execute(Unity.InferenceEngine.CPUBackend+GeluFastJob&, Unity.InferenceEngine, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null|System.IntPtr, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089|System.IntPtr, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089|Unity.Jobs.LowLevel.Unsafe.JobRanges&, UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null|System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089)--f8862752df1241006313c4004f1689e0

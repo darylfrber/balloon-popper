@@ -5,6 +5,7 @@ using System;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using Object = UnityEngine.Object;
 
 public class GameManager : MonoBehaviour
 {
@@ -58,6 +59,66 @@ public class GameManager : MonoBehaviour
     // Hoogste score (leaderboard: slechts 1 getal)
     public int HighScore => highScore;
 
+    // Power-up (double points) status for HUD
+    public bool DoublePointsActive => doublePointsActive;
+    public float DoublePointsRemaining => doublePointsActive ? Mathf.Max(0f, doublePointsTimer) : 0f;
+
+    // Prepare a completely fresh gameplay session (used when starting from Main Menu)
+    public void PrepareNewGame()
+    {
+        // Reset core state
+        isGameOver = false;
+        doublePointsActive = false;
+        doublePointsTimer = 0f;
+        score = 0;
+
+        // Remove lingering Game Over UI
+        var goCanvas = GameObject.Find("GameOverCanvas");
+        if (goCanvas != null) { try { Destroy(goCanvas); } catch { } }
+
+        // Remove lingering Main Menu overlay if present
+        var menu = GameObject.Find("MainMenuCanvas");
+        if (menu != null) { try { Destroy(menu); } catch { } }
+
+        // Remove old HUD (will be recreated)
+        var hud = GameObject.Find("HUD");
+        if (hud != null) { try { Destroy(hud); } catch { } }
+
+        // Stop and remove any spawners from a previous session
+        var spawners = Object.FindObjectsByType<BalloonSpawner>(FindObjectsSortMode.None);
+        foreach (var sp in spawners)
+        {
+            try { sp.Stop(); } catch { }
+            try { Destroy(sp.gameObject); } catch { }
+        }
+        var puSpawners = Object.FindObjectsByType<PowerUpSpawner>(FindObjectsSortMode.None);
+        foreach (var pus in puSpawners)
+        {
+            try { pus.Stop(); } catch { }
+            try { Destroy(pus.gameObject); } catch { }
+        }
+
+        // Destroy any lingering gameplay objects
+        var balloons = Object.FindObjectsByType<Balloon>(FindObjectsSortMode.None);
+        foreach (var b in balloons)
+        {
+            if (b != null) { try { Destroy(b.gameObject); } catch { } }
+        }
+        var powerUps = Object.FindObjectsByType<PowerUp>(FindObjectsSortMode.None);
+        foreach (var pu in powerUps)
+        {
+            if (pu != null) { try { Destroy(pu.gameObject); } catch { } }
+        }
+
+        // Re-enable click handler
+        var cam = Camera.main;
+        if (cam != null)
+        {
+            var click = cam.GetComponent<ClickToPop>();
+            if (click != null) click.enabled = true;
+        }
+    }
+
     // Methode om dubbele punten te activeren
     public void ActivateDoublePoints(float duration)
     {
@@ -97,10 +158,22 @@ public class GameManager : MonoBehaviour
         }
 
         // Stop all spawners
-        var spawners = FindObjectsOfType<BalloonSpawner>();
+        var spawners = Object.FindObjectsByType<BalloonSpawner>(FindObjectsSortMode.None);
         foreach (var sp in spawners)
         {
             try { sp.Stop(); } catch { }
+        }
+        // Stop power-up spawners
+        var puSpawners = Object.FindObjectsByType<PowerUpSpawner>(FindObjectsSortMode.None);
+        foreach (var pus in puSpawners)
+        {
+            try { pus.Stop(); } catch { }
+        }
+        // Destroy any active power-ups so none linger during Game Over
+        var powerUps = Object.FindObjectsByType<PowerUp>(FindObjectsSortMode.None);
+        foreach (var pu in powerUps)
+        {
+            if (pu != null) { try { Destroy(pu.gameObject); } catch { } }
         }
 
         // Disable click handler to prevent further pops
@@ -117,7 +190,7 @@ public class GameManager : MonoBehaviour
     private void ShowGameOverUI()
     {
         // Ensure EventSystem exists for UI interaction in build
-        if (FindObjectOfType<UnityEngine.EventSystems.EventSystem>() == null)
+        if (Object.FindFirstObjectByType<UnityEngine.EventSystems.EventSystem>() == null)
         {
             var es = new GameObject("EventSystem");
             es.AddComponent<UnityEngine.EventSystems.EventSystem>();
@@ -181,21 +254,21 @@ public class GameManager : MonoBehaviour
         srt.anchoredPosition = new Vector2(0f, 40f);
         srt.sizeDelta = new Vector2(600f, 60f);
 
-        // High score text
+        // High score text (place well above the buttons)
         var highGO = new GameObject("HighScore");
         highGO.transform.SetParent(canvasGO.transform, false);
         var hst = highGO.AddComponent<Text>();
         hst.font = Resources.GetBuiltinResource<Font>("LegacyRuntime.ttf");
         hst.text = $"High Score: {highScore}";
-        hst.fontSize = 28;
+        hst.fontSize = 30;
         hst.alignment = TextAnchor.MiddleCenter;
         hst.color = Color.white;
         var hrt = highGO.GetComponent<RectTransform>();
         hrt.anchorMin = new Vector2(0.5f, 0.5f);
         hrt.anchorMax = new Vector2(0.5f, 0.5f);
         hrt.pivot = new Vector2(0.5f, 0.5f);
-        hrt.anchoredPosition = new Vector2(0f, 0f);
-        hrt.sizeDelta = new Vector2(600f, 50f);
+        hrt.anchoredPosition = new Vector2(0f, 10f);
+        hrt.sizeDelta = new Vector2(700f, 55f);
 
         // Buttons
         GameObject MakeButton(string name, string label, Vector2 anchoredPos, UnityEngine.Events.UnityAction onClick)
@@ -231,8 +304,8 @@ public class GameManager : MonoBehaviour
             return btnGO;
         }
 
-        MakeButton("RestartButton", "Restart", new Vector2(0f, -20f), RestartCurrentScene);
-        MakeButton("QuitButton", "Quit", new Vector2(0f, -100f), QuitGame);
+        MakeButton("RestartButton", "Restart", new Vector2(0f, -60f), RestartCurrentScene);
+        MakeButton("QuitButton", "Quit", new Vector2(0f, -140f), QuitGame);
     }
 
     private void RestartCurrentScene()
@@ -252,18 +325,31 @@ public class GameManager : MonoBehaviour
         }
 
         // 3) Stop and remove spawners
-        var spawners = FindObjectsOfType<BalloonSpawner>();
+        var spawners = Object.FindObjectsByType<BalloonSpawner>(FindObjectsSortMode.None);
         foreach (var sp in spawners)
         {
             try { sp.Stop(); } catch { }
             try { Destroy(sp.gameObject); } catch { }
         }
+        // 3b) Stop and remove power-up spawners
+        var puSpawners = Object.FindObjectsByType<PowerUpSpawner>(FindObjectsSortMode.None);
+        foreach (var pus in puSpawners)
+        {
+            try { pus.Stop(); } catch { }
+            try { Destroy(pus.gameObject); } catch { }
+        }
 
         // 4) Destroy existing balloons
-        var balloons = FindObjectsOfType<Balloon>();
+        var balloons = Object.FindObjectsByType<Balloon>(FindObjectsSortMode.None);
         foreach (var b in balloons)
         {
             if (b != null) try { Destroy(b.gameObject); } catch { }
+        }
+        // 4b) Destroy existing power-ups
+        var powerUps = Object.FindObjectsByType<PowerUp>(FindObjectsSortMode.None);
+        foreach (var pu in powerUps)
+        {
+            if (pu != null) try { Destroy(pu.gameObject); } catch { }
         }
 
         // 5) Remove old HUD (will be recreated)

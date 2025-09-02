@@ -8,13 +8,30 @@ using UnityEngine.UI;
 public class HUDController : MonoBehaviour
 {
     public Text scoreText;
+    public Text powerUpText;
+    public Text highScoreText;
 
     private void Update()
     {
         var gm = GameManager.Instance;
-        if (gm != null && scoreText != null)
+        if (gm != null)
         {
-            scoreText.text = $"Score: {gm.Score}\nHigh: {gm.HighScore}"; // Toon score en hoogste score
+            if (scoreText != null)
+                scoreText.text = $"Score: {gm.Score}";
+            if (highScoreText != null)
+                highScoreText.text = $"High: {gm.HighScore}";
+        }
+        if (powerUpText != null)
+        {
+            if (gm != null && gm.DoublePointsActive)
+            {
+                int remain = Mathf.CeilToInt(gm.DoublePointsRemaining);
+                powerUpText.text = $"x2 Dubbele punten: {remain}s";
+            }
+            else
+            {
+                powerUpText.text = string.Empty;
+            }
         }
     }
 }

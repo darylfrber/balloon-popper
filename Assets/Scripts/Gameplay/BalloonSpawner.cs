@@ -53,6 +53,17 @@ public class BalloonSpawner : MonoBehaviour
         float zPosition = UnityEngine.Random.Range(spawnZRange.x, spawnZRange.y); // Willekeurige Z-positie
         Vector3 spawnPosition = new Vector3(xPosition, -5f, zPosition); // Spawn onderaan, variërende diepte
         var clone = Instantiate(balloonPrefab, spawnPosition, Quaternion.identity);
+
+        // Depth-aware scaling and speed: near (low Z) = larger/faster, far (high Z) = smaller/slower
+        float t = Mathf.InverseLerp(spawnZRange.x, spawnZRange.y, zPosition); // 0 near -> 1 far
+        float scaleMul = Mathf.Lerp(1.25f, 0.8f, t);
+        clone.transform.localScale = clone.transform.localScale * scaleMul;
+        var balloonComp = clone.GetComponent<Balloon>();
+        if (balloonComp != null)
+        {
+            balloonComp.riseSpeed *= Mathf.Lerp(1.15f, 0.9f, t);
+        }
+
         clone.SetActive(true);
         // Randomize color slightly for variety (apply to all parts)
         var renderers = clone.GetComponentsInChildren<MeshRenderer>(true);
@@ -66,10 +77,10 @@ public class BalloonSpawner : MonoBehaviour
                     // ensure unique material instance to avoid global change
                     var mat = r.material;
                     if (!mat) continue;
-                    Color t = r.gameObject.name == "String" ? new Color(0.1f,0.1f,0.1f) : c;
-                    try { mat.color = t; } catch {}
-                    if (mat.HasProperty("_BaseColor")) mat.SetColor("_BaseColor", t);
-                    if (mat.HasProperty("_Color")) mat.SetColor("_Color", t);
+                    Color tcol = r.gameObject.name == "String" ? new Color(0.1f,0.1f,0.1f) : c;
+                    try { mat.color = tcol; } catch {}
+                    if (mat.HasProperty("_BaseColor")) mat.SetColor("_BaseColor", tcol);
+                    if (mat.HasProperty("_Color")) mat.SetColor("_Color", tcol);
                 }
             }
         }

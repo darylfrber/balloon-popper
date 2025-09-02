@@ -1,58 +1,18 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\scrip\\OneDrive\\Desktop\\Unity\\Balloon Popper\\",
+  "WorkspaceRootPath": "C:\\Users\\scrip\\balloon-popper\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\scrip\\OneDrive\\Desktop\\Unity\\Balloon Popper\\Assets\\Scripts\\Core\\ScoreManager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Assets\\Scripts\\Core\\ScoreManager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\scrip\\balloon-popper\\Assets\\Scripts\\MainMenuManager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Assets\\Scripts\\MainMenuManager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\scrip\\OneDrive\\Desktop\\Unity\\Balloon Popper\\Assets\\Scripts\\Environment\\LevelConfig.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Assets\\Scripts\\Environment\\LevelConfig.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\scrip\\balloon-popper\\Assets\\Scripts\\GameOverManager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Assets\\Scripts\\GameOverManager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\scrip\\OneDrive\\Desktop\\Unity\\Balloon Popper\\Assets\\Scripts\\Gameplay\\Balloon.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Assets\\Scripts\\Gameplay\\Balloon.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\scrip\\OneDrive\\Desktop\\Unity\\Balloon Popper\\Assets\\Scripts\\Gameplay\\BalloonSpawner.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Assets\\Scripts\\Gameplay\\BalloonSpawner.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\scrip\\OneDrive\\Desktop\\Unity\\Balloon Popper\\Assets\\Scripts\\Gameplay\\Needle.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Assets\\Scripts\\Gameplay\\Needle.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\scrip\\OneDrive\\Desktop\\Unity\\Balloon Popper\\Assets\\Scripts\\UI\\HUDController.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Assets\\Scripts\\UI\\HUDController.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\scrip\\OneDrive\\Desktop\\Unity\\Balloon Popper\\Assets\\Scripts\\Gameplay\\PowerUpPickup.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Assets\\Scripts\\Gameplay\\PowerUpPickup.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{EA6E0AA4-C701-8BD3-A558-3ADF94594444}|Assembly-CSharp-Editor.csproj|c:\\users\\scrip\\onedrive\\desktop\\unity\\balloon popper\\assets\\scripts\\util\\runtimeartfactory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{EA6E0AA4-C701-8BD3-A558-3ADF94594444}|Assembly-CSharp-Editor.csproj|solutionrelative:assets\\scripts\\util\\runtimeartfactory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{EA6E0AA4-C701-8BD3-A558-3ADF94594444}|Assembly-CSharp-Editor.csproj|c:\\users\\scrip\\onedrive\\desktop\\unity\\balloon popper\\assets\\scripts\\gameplay\\needlevisual.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{EA6E0AA4-C701-8BD3-A558-3ADF94594444}|Assembly-CSharp-Editor.csproj|solutionrelative:assets\\scripts\\gameplay\\needlevisual.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\scrip\\OneDrive\\Desktop\\Unity\\Balloon Popper\\Assets\\Scripts\\Core\\LevelManager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Assets\\Scripts\\Core\\LevelManager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\scrip\\OneDrive\\Desktop\\Unity\\Balloon Popper\\Assets\\Scripts\\Core\\GameManager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\scrip\\balloon-popper\\Assets\\Scripts\\Core\\GameManager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Assets\\Scripts\\Core\\GameManager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\scrip\\OneDrive\\Desktop\\Unity\\Balloon Popper\\Assets\\TutorialInfo\\Scripts\\Readme.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Assets\\TutorialInfo\\Scripts\\Readme.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\scrip\\OneDrive\\Desktop\\Unity\\Balloon Popper\\Assets\\Scripts\\Gameplay\\PowerUpDropper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Assets\\Scripts\\Gameplay\\PowerUpDropper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -62,175 +22,45 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 9,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "LevelManager.cs",
-              "DocumentMoniker": "C:\\Users\\scrip\\OneDrive\\Desktop\\Unity\\Balloon Popper\\Assets\\Scripts\\Core\\LevelManager.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\Core\\LevelManager.cs",
-              "ToolTip": "C:\\Users\\scrip\\OneDrive\\Desktop\\Unity\\Balloon Popper\\Assets\\Scripts\\Core\\LevelManager.cs",
-              "RelativeToolTip": "Assets\\Scripts\\Core\\LevelManager.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-29T14:56:47.687Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "NeedleVisual.cs",
-              "DocumentMoniker": "C:\\Users\\scrip\\OneDrive\\Desktop\\Unity\\Balloon Popper\\Assets\\Scripts\\Gameplay\\NeedleVisual.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\Gameplay\\NeedleVisual.cs",
-              "ToolTip": "C:\\Users\\scrip\\OneDrive\\Desktop\\Unity\\Balloon Popper\\Assets\\Scripts\\Gameplay\\NeedleVisual.cs",
-              "RelativeToolTip": "Assets\\Scripts\\Gameplay\\NeedleVisual.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-29T14:52:51.586Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "RuntimeArtFactory.cs",
-              "DocumentMoniker": "C:\\Users\\scrip\\OneDrive\\Desktop\\Unity\\Balloon Popper\\Assets\\Scripts\\Util\\RuntimeArtFactory.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\Util\\RuntimeArtFactory.cs",
-              "ToolTip": "C:\\Users\\scrip\\OneDrive\\Desktop\\Unity\\Balloon Popper\\Assets\\Scripts\\Util\\RuntimeArtFactory.cs",
-              "RelativeToolTip": "Assets\\Scripts\\Util\\RuntimeArtFactory.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAB4AAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-29T14:52:42.887Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "PowerUpPickup.cs",
-              "DocumentMoniker": "C:\\Users\\scrip\\OneDrive\\Desktop\\Unity\\Balloon Popper\\Assets\\Scripts\\Gameplay\\PowerUpPickup.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\Gameplay\\PowerUpPickup.cs",
-              "ToolTip": "C:\\Users\\scrip\\OneDrive\\Desktop\\Unity\\Balloon Popper\\Assets\\Scripts\\Gameplay\\PowerUpPickup.cs",
-              "RelativeToolTip": "Assets\\Scripts\\Gameplay\\PowerUpPickup.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-29T14:48:04.633Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "HUDController.cs",
-              "DocumentMoniker": "C:\\Users\\scrip\\OneDrive\\Desktop\\Unity\\Balloon Popper\\Assets\\Scripts\\UI\\HUDController.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\UI\\HUDController.cs",
-              "ToolTip": "C:\\Users\\scrip\\OneDrive\\Desktop\\Unity\\Balloon Popper\\Assets\\Scripts\\UI\\HUDController.cs",
-              "RelativeToolTip": "Assets\\Scripts\\UI\\HUDController.cs",
-              "ViewState": "AgIAADIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-29T14:47:39.626Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "Needle.cs",
-              "DocumentMoniker": "C:\\Users\\scrip\\OneDrive\\Desktop\\Unity\\Balloon Popper\\Assets\\Scripts\\Gameplay\\Needle.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\Gameplay\\Needle.cs",
-              "ToolTip": "C:\\Users\\scrip\\OneDrive\\Desktop\\Unity\\Balloon Popper\\Assets\\Scripts\\Gameplay\\Needle.cs",
-              "RelativeToolTip": "Assets\\Scripts\\Gameplay\\Needle.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-29T14:47:29.376Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "BalloonSpawner.cs",
-              "DocumentMoniker": "C:\\Users\\scrip\\OneDrive\\Desktop\\Unity\\Balloon Popper\\Assets\\Scripts\\Gameplay\\BalloonSpawner.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\Gameplay\\BalloonSpawner.cs",
-              "ToolTip": "C:\\Users\\scrip\\OneDrive\\Desktop\\Unity\\Balloon Popper\\Assets\\Scripts\\Gameplay\\BalloonSpawner.cs",
-              "RelativeToolTip": "Assets\\Scripts\\Gameplay\\BalloonSpawner.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABgAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-29T14:47:17.79Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "Balloon.cs",
-              "DocumentMoniker": "C:\\Users\\scrip\\OneDrive\\Desktop\\Unity\\Balloon Popper\\Assets\\Scripts\\Gameplay\\Balloon.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\Gameplay\\Balloon.cs",
-              "ToolTip": "C:\\Users\\scrip\\OneDrive\\Desktop\\Unity\\Balloon Popper\\Assets\\Scripts\\Gameplay\\Balloon.cs",
-              "RelativeToolTip": "Assets\\Scripts\\Gameplay\\Balloon.cs",
-              "ViewState": "AgIAAAEAAAAAAAAAAAAqwBUAAAAAAAAAAAAAAA==",
+              "Title": "GameManager.cs",
+              "DocumentMoniker": "C:\\Users\\scrip\\balloon-popper\\Assets\\Scripts\\Core\\GameManager.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Core\\GameManager.cs",
+              "ToolTip": "C:\\Users\\scrip\\balloon-popper\\Assets\\Scripts\\Core\\GameManager.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Core\\GameManager.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAxwH8BAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-29T14:46:25.605Z",
+              "WhenOpened": "2025-08-30T16:23:34.742Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "LevelConfig.cs",
-              "DocumentMoniker": "C:\\Users\\scrip\\OneDrive\\Desktop\\Unity\\Balloon Popper\\Assets\\Scripts\\Environment\\LevelConfig.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\Environment\\LevelConfig.cs",
-              "ToolTip": "C:\\Users\\scrip\\OneDrive\\Desktop\\Unity\\Balloon Popper\\Assets\\Scripts\\Environment\\LevelConfig.cs",
-              "RelativeToolTip": "Assets\\Scripts\\Environment\\LevelConfig.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAAAAAAAAAAAA==",
+              "Title": "GameOverManager.cs",
+              "DocumentMoniker": "C:\\Users\\scrip\\balloon-popper\\Assets\\Scripts\\GameOverManager.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\GameOverManager.cs",
+              "ToolTip": "C:\\Users\\scrip\\balloon-popper\\Assets\\Scripts\\GameOverManager.cs",
+              "RelativeToolTip": "Assets\\Scripts\\GameOverManager.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAxwBkAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-29T14:46:18.379Z",
+              "WhenOpened": "2025-08-30T16:13:40.787Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "ScoreManager.cs",
-              "DocumentMoniker": "C:\\Users\\scrip\\OneDrive\\Desktop\\Unity\\Balloon Popper\\Assets\\Scripts\\Core\\ScoreManager.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\Core\\ScoreManager.cs",
-              "ToolTip": "C:\\Users\\scrip\\OneDrive\\Desktop\\Unity\\Balloon Popper\\Assets\\Scripts\\Core\\ScoreManager.cs",
-              "RelativeToolTip": "Assets\\Scripts\\Core\\ScoreManager.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAACEAAAAAAAAAAAAAAA==",
+              "Title": "MainMenuManager.cs",
+              "DocumentMoniker": "C:\\Users\\scrip\\balloon-popper\\Assets\\Scripts\\MainMenuManager.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\MainMenuManager.cs",
+              "ToolTip": "C:\\Users\\scrip\\balloon-popper\\Assets\\Scripts\\MainMenuManager.cs",
+              "RelativeToolTip": "Assets\\Scripts\\MainMenuManager.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABkAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-29T14:46:00.393Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 12,
-              "Title": "PowerUpDropper.cs",
-              "DocumentMoniker": "C:\\Users\\scrip\\OneDrive\\Desktop\\Unity\\Balloon Popper\\Assets\\Scripts\\Gameplay\\PowerUpDropper.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\Gameplay\\PowerUpDropper.cs",
-              "ToolTip": "C:\\Users\\scrip\\OneDrive\\Desktop\\Unity\\Balloon Popper\\Assets\\Scripts\\Gameplay\\PowerUpDropper.cs",
-              "RelativeToolTip": "Assets\\Scripts\\Gameplay\\PowerUpDropper.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-29T14:48:20.624Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 11,
-              "Title": "Readme.cs",
-              "DocumentMoniker": "C:\\Users\\scrip\\OneDrive\\Desktop\\Unity\\Balloon Popper\\Assets\\TutorialInfo\\Scripts\\Readme.cs",
-              "RelativeDocumentMoniker": "Assets\\TutorialInfo\\Scripts\\Readme.cs",
-              "ToolTip": "C:\\Users\\scrip\\OneDrive\\Desktop\\Unity\\Balloon Popper\\Assets\\TutorialInfo\\Scripts\\Readme.cs",
-              "RelativeToolTip": "Assets\\TutorialInfo\\Scripts\\Readme.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-29T14:48:36.651Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": "GameManager.cs",
-              "DocumentMoniker": "C:\\Users\\scrip\\OneDrive\\Desktop\\Unity\\Balloon Popper\\Assets\\Scripts\\Core\\GameManager.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\Core\\GameManager.cs",
-              "ToolTip": "C:\\Users\\scrip\\OneDrive\\Desktop\\Unity\\Balloon Popper\\Assets\\Scripts\\Core\\GameManager.cs",
-              "RelativeToolTip": "Assets\\Scripts\\Core\\GameManager.cs",
-              "ViewState": "AgIAABQAAAAAAAAAAAAqwAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-29T14:45:19.2Z",
+              "WhenOpened": "2025-08-30T16:13:24.329Z",
               "EditorCaption": ""
             }
           ]
