@@ -1,0 +1,48 @@
+﻿// 8/30/2025 AI-Tag
+// This was created with the help of Assistant, a Unity Artificial Intelligence product.
+
+using System;
+using UnityEngine;
+using UnityEngine.SceneManagement;
+
+public class GameOverManager : MonoBehaviour
+{
+    public void RestartGame()
+    {
+        Debug.Log("GameOverManager: Restarting game");
+        
+        // Use GameManager's restart functionality for proper cleanup
+        if (GameManager.Instance != null)
+        {
+            // This will handle proper cleanup and restart via PrototypeBootstrapper
+            GameManager.Instance.RestartCurrentScene();
+        }
+        else
+        {
+            // Fallback: restart current scene
+            int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
+            Debug.Log($"Fallback: Restarting scene with index: {currentSceneIndex}");
+            SceneManager.LoadScene(currentSceneIndex);
+        }
+    }
+
+    public void ReturnToMenu()
+    {
+        Debug.Log("GameOverManager: Returning to main menu");
+        
+        // Reset the game state and show the main menu
+        if (GameManager.Instance != null)
+        {
+            GameManager.Instance.PrepareNewGame();
+        }
+        
+        // Ensure the main menu is visible
+        PrototypeBootstrapper.EnsureMainMenuVisible();
+        
+        // Destroy this game over canvas
+        if (gameObject != null)
+        {
+            Destroy(gameObject);
+        }
+    }
+}
