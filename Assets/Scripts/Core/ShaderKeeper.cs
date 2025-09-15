@@ -35,6 +35,13 @@ public class ShaderKeeper : MonoBehaviour
         TryKeep("Unlit/Color");
         TryKeep("Universal Render Pipeline/Lit");
         TryKeep("Standard");
+        // Extra fallbacks for builds where materials may downgrade
+        TryKeep("Legacy Shaders/Specular");
+        // Particle shaders for activation effects
+        TryKeep("Particles/Standard Unlit");
+        TryKeep("Particles/Additive");
+        TryKeep("Universal Render Pipeline/Particles/Unlit");
+        TryKeep("Universal Render Pipeline/Particles/Simple Lit");
     }
 
     private void TryKeep(string shaderName)

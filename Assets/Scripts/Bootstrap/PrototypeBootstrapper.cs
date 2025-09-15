@@ -65,6 +65,7 @@ public static class PrototypeBootstrapper
         {
             // Built-in pipeline
             shader = Shader.Find("Standard");
+            if (shader == null) shader = Shader.Find("Legacy Shaders/Specular");
             if (shader == null) shader = Shader.Find("Unlit/Color");
             if (shader == null) shader = Shader.Find("Universal Render Pipeline/Lit");
             if (shader == null) shader = Shader.Find("Universal Render Pipeline/Unlit");
@@ -75,6 +76,7 @@ public static class PrototypeBootstrapper
             shader = Shader.Find("Universal Render Pipeline/Lit");
             if (shader == null) shader = Shader.Find("Universal Render Pipeline/Unlit");
             if (shader == null) shader = Shader.Find("Standard");
+            if (shader == null) shader = Shader.Find("Legacy Shaders/Specular");
             if (shader == null) shader = Shader.Find("Unlit/Color");
         }
         var mat = new Material(shader);
@@ -86,6 +88,17 @@ public static class PrototypeBootstrapper
         if (mat.HasProperty("_Smoothness")) mat.SetFloat("_Smoothness", 0.85f);
         if (mat.HasProperty("_Glossiness")) mat.SetFloat("_Glossiness", 0.85f);
         if (mat.HasProperty("_Metallic")) mat.SetFloat("_Metallic", 0.02f);
+        // Ensure specular highlights/environment reflections are enabled (URP/Standard)
+        try
+        {
+            // Disable any OFF keywords so highlights are visible in builds
+            mat.DisableKeyword("_SPECULARHIGHLIGHTS_OFF");
+            mat.DisableKeyword("_ENVIRONMENTREFLECTIONS_OFF");
+            mat.DisableKeyword("_GLOSSYREFLECTIONS_OFF");
+            if (mat.HasProperty("_SpecularHighlights")) mat.SetFloat("_SpecularHighlights", 1f);
+            if (mat.HasProperty("_EnvironmentReflections")) mat.SetFloat("_EnvironmentReflections", 1f);
+        }
+        catch { }
         return mat;
     }
 
@@ -104,6 +117,26 @@ public static class PrototypeBootstrapper
         l.intensity = 0.8f;
         l.range = 60f; // cover gameplay area in front of camera
         l.shadows = LightShadows.Soft;
+    }
+
+    // Adds a small realtime reflection probe near the camera to improve specular/environment reflections in builds.
+    private static void EnsureCameraReflectionProbe(Camera cam)
+    {
+        if (cam == null) return;
+        var t = cam.transform;
+        var existing = t.Find("RuntimeReflectionProbe");
+        if (existing != null) return;
+        var go = new GameObject("RuntimeReflectionProbe");
+        go.transform.SetParent(t, false);
+        go.transform.localPosition = Vector3.zero;
+        var probe = go.AddComponent<ReflectionProbe>();
+        probe.mode = UnityEngine.Rendering.ReflectionProbeMode.Realtime;
+        probe.refreshMode = UnityEngine.Rendering.ReflectionProbeRefreshMode.EveryFrame;
+        probe.timeSlicingMode = UnityEngine.Rendering.ReflectionProbeTimeSlicingMode.IndividualFaces;
+        probe.intensity = 0.6f;
+        probe.boxProjection = true;
+        probe.size = new Vector3(30f, 20f, 30f);
+        probe.clearFlags = UnityEngine.Rendering.ReflectionProbeClearFlags.Skybox;
     }
 
     [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.AfterSceneLoad)]
@@ -154,6 +187,8 @@ public static class PrototypeBootstrapper
             }
             // Ensure a small point light exists to create specular highlights on balloons
             EnsureCameraSpecularLight(mainCam);
+            // Ensure a realtime reflection probe exists for improved specular/reflections in builds
+            EnsureCameraReflectionProbe(mainCam);
 
             // 2) Ensure Light
             if (Object.FindAnyObjectByType<Light>() == null)
@@ -196,6 +231,7 @@ public static class PrototypeBootstrapper
             camNow.clearFlags = CameraClearFlags.SolidColor;
             camNow.backgroundColor = BackgroundColor;
             EnsureCameraSpecularLight(camNow);
+            EnsureCameraReflectionProbe(camNow);
         }
 
         // Build Main Menu only on first run
@@ -480,13 +516,19 @@ public static class PrototypeBootstrapper
         hud.highScoreText = highText;
     }
 
-    private static void CreateSimple3DEnvironment()
+    public static void CreateSimple3DEnvironment()
     {
+        // If environment already exists, skip to avoid duplicates
+        if (GameObject.Find("Ground") != null && GameObject.Find("BackdropQuad") != null)
+        {
+            return;
+        }
         // Ground Plane
         var ground = GameObject.CreatePrimitive(PrimitiveType.Plane);
         ground.name = "Ground";
         ground.transform.position = new Vector3(0f, -6f, 12f);
-        ground.transform.localScale = new Vector3(14f, 1f, 14f);
+        // Make the ground (platform) wider and deeper so it overlaps the mountains and fills the edges
+        ground.transform.localScale = new Vector3(22f, 1f, 20f);
         var gmr = ground.GetComponent<MeshRenderer>();
         if (gmr != null)
         {
@@ -499,6 +541,7 @@ public static class PrototypeBootstrapper
         var decorRoot = new GameObject("GroundDecor");
         // Ground extents (Unity Plane is 10x10 scaled by localScale.x/z)
         float halfSize = 5f * ground.transform.localScale.x; // = 25 when scale 5
+        float halfSizeZ = 5f * ground.transform.localScale.z;
         // Scatter improved bushes (denser dome-shaped, varied greens)
         int bushCount = 20;
         for (int i = 0; i < bushCount; i++)
@@ -507,7 +550,7 @@ public static class PrototypeBootstrapper
             bush.transform.SetParent(decorRoot.transform, false);
             // Random position within ground bounds, avoid center area
             float x = Random.Range(-halfSize + 2f, halfSize - 2f);
-            float z = ground.transform.position.z + Random.Range(-halfSize + 2f, halfSize - 2f);
+            float z = ground.transform.position.z + Random.Range(-halfSizeZ + 2f, halfSizeZ - 2f);
             if (Mathf.Abs(x) < 3.5f) x = Mathf.Sign(x) * 3.5f;
             bush.transform.position = new Vector3(x, -5.8f, z);
             int puffs = Random.Range(4, 7);
@@ -547,7 +590,7 @@ public static class PrototypeBootstrapper
             rock.name = $"Rock_{i}";
             rock.transform.SetParent(decorRoot.transform, false);
             float x = Random.Range(-halfSize + 2f, halfSize - 2f);
-            float z = ground.transform.position.z + Random.Range(-halfSize + 2f, halfSize - 2f);
+            float z = ground.transform.position.z + Random.Range(-halfSizeZ + 2f, halfSizeZ - 2f);
             if (Mathf.Abs(x) < 4.5f) x = Mathf.Sign(x) * 4.5f;
             rock.transform.position = new Vector3(x, -5.9f, z);
             rock.transform.rotation = Quaternion.Euler(Random.Range(0f, 12f), Random.Range(0f, 360f), Random.Range(0f, 12f));
@@ -564,7 +607,7 @@ public static class PrototypeBootstrapper
         }
 
         // Trees (stems + crowns)
-        int treeCount = 260; // dense forest look
+        int treeCount = 900; // much denser forest look per request
         for (int i = 0; i < treeCount; i++)
         {
             var tree = new GameObject($"Tree_{i}");
@@ -579,19 +622,19 @@ public static class PrototypeBootstrapper
             {
                 // Left band
                 x = Random.Range(-halfSize + 3f, -10f);
-                z = ground.transform.position.z + Random.Range(-halfSize + 4f, halfSize - 4f);
+                z = ground.transform.position.z + Random.Range(-halfSizeZ + 4f, halfSizeZ - 4f);
             }
             else if (band == 1)
             {
                 // Right band
                 x = Random.Range(10f, halfSize - 3f);
-                z = ground.transform.position.z + Random.Range(-halfSize + 4f, halfSize - 4f);
+                z = ground.transform.position.z + Random.Range(-halfSizeZ + 4f, halfSizeZ - 4f);
             }
             else
             {
                 // Back band (far z strip)
                 x = Random.Range(-halfSize + 4f, halfSize - 4f);
-                float zEdge = Random.value < 0.5f ? (ground.transform.position.z + halfSize - 5f) : (ground.transform.position.z - halfSize + 5f);
+                float zEdge = Random.value < 0.5f ? (ground.transform.position.z + halfSizeZ - 5f) : (ground.transform.position.z - halfSizeZ + 5f);
                 z = zEdge + Random.Range(-2.5f, 2.5f);
             }
 
@@ -657,7 +700,7 @@ public static class PrototypeBootstrapper
             tuft.name = $"Grass_{i}";
             tuft.transform.SetParent(decorRoot.transform, false);
             float x = Random.Range(-halfSize + 2f, halfSize - 2f);
-            float z = ground.transform.position.z + Random.Range(-halfSize + 2f, halfSize - 2f);
+            float z = ground.transform.position.z + Random.Range(-halfSizeZ + 2f, halfSizeZ - 2f);
             if (Mathf.Abs(x) < 2.5f) x = Mathf.Sign(x) * 2.5f;
             tuft.transform.position = new Vector3(x, -5.9f, z);
             tuft.transform.localScale = new Vector3(Random.Range(0.05f, 0.08f), Random.Range(0.12f, 0.2f), Random.Range(0.05f, 0.08f));
@@ -680,7 +723,7 @@ public static class PrototypeBootstrapper
             stem.name = $"FlowerStem_{i}";
             stem.transform.SetParent(decorRoot.transform, false);
             float x = Random.Range(-halfSize + 2f, halfSize - 2f);
-            float z = ground.transform.position.z + Random.Range(-halfSize + 2f, halfSize - 2f);
+            float z = ground.transform.position.z + Random.Range(-halfSizeZ + 2f, halfSizeZ - 2f);
             if (Mathf.Abs(x) < 5f) x = Mathf.Sign(x) * 5f; // keep further from middle
             stem.transform.position = new Vector3(x, -5.85f, z);
             stem.transform.localScale = new Vector3(0.03f, Random.Range(0.18f, 0.28f), 0.03f);
@@ -816,9 +859,10 @@ public static class PrototypeBootstrapper
             var mm = mgo.AddComponent<MountainsMesh>();
             mm.targetCamera = cam;
             float backdropDist = (fitter != null ? fitter.distanceFromCamera : 60f);
-            // Place mountains between the furthest hill and the backdrop, but closer than before for visibility
-            float baseMountDist = nearHillDist + 18f; // behind hills
-            mm.distanceFromCamera = Mathf.Min(backdropDist - 2f, baseMountDist + j * 5f);
+            // Place mountains right at the end of the platform (ground) and ensure they remain in front of the backdrop
+            float farEdgeZ = ground.transform.position.z + halfSize;
+            float desiredMountDist = Mathf.Clamp((farEdgeZ - cam.transform.position.z) + 2f, 10f, backdropDist - 4f); // just beyond platform edge, visible
+            mm.distanceFromCamera = Mathf.Min(backdropDist - 4f, desiredMountDist + j * 3f);
             // Raise mountains further and increase height for clear visibility
             mm.baseY = 2.0f + j * 0.6f;
             mm.amplitude = 12.0f + j * 2.5f;

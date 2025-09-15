@@ -169,6 +169,16 @@ public class MountainsMesh : MonoBehaviour
         if (mat.HasProperty("_BaseColor")) mat.SetColor("_BaseColor", c);
         if (mat.HasProperty("_Color")) mat.SetColor("_Color", c);
         try { mat.color = c; } catch { }
+        // Ensure mountains are always visible regardless of triangle winding by disabling backface culling where supported
+        try
+        {
+            if (mat.HasProperty("_Cull")) mat.SetInt("_Cull", (int)UnityEngine.Rendering.CullMode.Off);
+            if (mat.HasProperty("_CullMode")) mat.SetInt("_CullMode", (int)UnityEngine.Rendering.CullMode.Off);
+            if (mat.HasProperty("_DoubleSidedEnable")) mat.SetInt("_DoubleSidedEnable", 1);
+        }
+        catch { }
+        // Render in the regular opaque queue
+        try { mat.renderQueue = (int)UnityEngine.Rendering.RenderQueue.Geometry; } catch { }
         return mat;
     }
 
